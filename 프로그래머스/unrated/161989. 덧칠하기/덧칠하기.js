@@ -7,7 +7,6 @@ function solution(n, m, section) {
         for(let j = section[i]; j < m+section[i]; j++){
             array.push(j);
         }
-    }  
-    
+    }
     return answer;
 }
