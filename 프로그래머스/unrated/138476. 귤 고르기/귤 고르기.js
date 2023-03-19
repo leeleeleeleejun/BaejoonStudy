@@ -7,8 +7,7 @@ function solution(k, tangerine) {
     const ary = Object.values(obj).sort(function(a, b) {
         return b - a;
     })
-    
-    
+
   for (item of ary) {
     answer++;
     if (k > item) k -= item;
