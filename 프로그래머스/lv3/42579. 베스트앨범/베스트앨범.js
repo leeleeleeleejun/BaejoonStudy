@@ -13,7 +13,7 @@ function solution(genres, plays) {
   }
 
   const sortedGenres = [...map].sort((a, b) => b[1].totalPlays - a[1].totalPlays);
-
+  
   for (const genreInfo of sortedGenres) {
     const sortedSongs = genreInfo[1].songs.sort((a, b) => b.plays - a.plays);
     answer.push(sortedSongs[0].index);
