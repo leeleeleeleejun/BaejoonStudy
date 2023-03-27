@@ -5,7 +5,7 @@ function solution(numbers) {
   
     // 모든 조합을 구하는 재귀함수
   function recursive(comb, others) {
-      // comb를 기준으로 조합 추가
+      // comb 추가
     if (comb.length !== 0) set.add(Number(comb.join("")));
     for (let i = 0; i < others.length; i++) {
       recursive(
