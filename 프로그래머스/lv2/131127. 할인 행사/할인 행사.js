@@ -6,7 +6,7 @@ function solution(want, number, discount) {
   }
     
   map = [...map]
-  for(let i = 0; i < discount.length; i ++){
+  for(let i = 0; i < discount.length - 9; i ++){
       const array = discount.slice(i, i + 10)
       for(let j = 0; j < map.length; j++){
           let a = array.filter(i => i === map[j][0])
