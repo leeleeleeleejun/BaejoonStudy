@@ -1,6 +1,5 @@
 function solution(tickets) {
   var answer = [];
-    tickets.sort()
   function serch(target, othres, result) {
       if(othres.length === 1){
           answer.push([...result, othres[0][0], othres[0][1]])
