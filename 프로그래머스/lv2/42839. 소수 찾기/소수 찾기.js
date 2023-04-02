@@ -1,6 +1,6 @@
 function solution(numbers) {
-    // 숫자의 조합이 들어갈 객체
-    // 
+  // 숫자의 조합이 들어갈 객체
+  //
   const set = new Set();
   var answer = 0;
   numbers = numbers.split("");
@@ -12,7 +12,7 @@ function solution(numbers) {
     for (let i = 0; i < others.length; i++) {
       recursive(
         [...comb, others[i]],
-        [...others.slice(0, i), ...others.slice(i + 1, others.length)]
+        [...others.slice(0, i), ...others.slice(i + 1)]
       );
     }
   }
@@ -25,20 +25,19 @@ function solution(numbers) {
   // 3. recursive([1, 2], [3]) , recursive([1, 3], [2])
   // 4. recursive([1, 2, 3], []) , recursive([1, 3, 2], [])
 
-  for (const item of [...set]) {
-    // 모든 조합을 순회하며 소수 확인
-    if (isPrime(item)) answer++;
-  }
-    
-    
   // 소수를 구하는 함수
   function isPrime(num) {
     if (num === 0 || num === 1) return false;
-      // 에라토스테네스의 채
+    // 에라토스테네스의 채
     for (let i = 2; i <= Math.sqrt(num); i++) {
       if (num % i === 0) return false;
     }
     return true;
+  }
+
+  for (const item of [...set]) {
+    // 모든 조합을 순회하며 소수 확인
+    if (isPrime(item)) answer++;
   }
 
   return answer;
