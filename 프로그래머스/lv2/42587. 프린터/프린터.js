@@ -9,6 +9,7 @@ function solution(priorities, location) {
     while(true){
         if(map[0][1] === priorities[0]){
             if(map[0][0] === location){
+                answer++;
                 break;
             }
             answer++
@@ -18,7 +19,6 @@ function solution(priorities, location) {
             map.push(map[0]);
             map.shift();
         }
-        
     }
-    return answer+1;
+    return answer;
 }
