@@ -12,5 +12,5 @@ function solution(s){
         }
     }
 
-    return stack === 0 ? true : false;
+    return stack === 0;
 }
