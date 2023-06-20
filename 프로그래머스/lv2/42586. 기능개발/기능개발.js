@@ -15,8 +15,5 @@ function solution(progresses, speeds) {
             answer.push(result)
         }
     }
-    
     return answer;
 }
-
-[90, 90, 90, 90],[30, 1, 1, 1],[1, 3]
