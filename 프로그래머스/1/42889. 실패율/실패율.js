@@ -1,6 +1,5 @@
 function solution(N, stages) {
     var answer = [];
-    stages.sort((a,b)=> a-b)
     for(let i = 1; i <= N; i++){
         const arrivePlayer = stages.filter(item => item >= i);
         const clearPlayer = stages.filter(item => item > i);
