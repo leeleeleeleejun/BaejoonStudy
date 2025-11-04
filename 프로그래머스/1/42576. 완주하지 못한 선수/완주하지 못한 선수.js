@@ -3,25 +3,21 @@ function solution(participant, completion) {
     const map1 = new Map()
     const map2 = new Map()
     
-    for(let i = 0;  i < participant.length; i++){
-        const currParticipant = participant[i]
-        const value = map1.get(currParticipant)
-        if(value){
-            map1.set(currParticipant, value + 1)
-        }else{
-            map1.set(currParticipant, 1)
+    const setMap = (map, peoples) => {   
+        for(let i = 0;  i < peoples.length; i++){
+            const currPeople = peoples[i]
+            const value = map.get(currPeople)
+            if(value){
+                map.set(currPeople, value + 1)
+            }else{
+                map.set(currPeople, 1)
+            }
         }
     }
     
-    for(let i = 0;  i < completion.length; i++){
-        const currCompletion = completion[i]
-        const value = map2.get(currCompletion)
-        if(value){
-            map2.set(currCompletion, value + 1)
-        }else{
-            map2.set(currCompletion, 1)
-        }
-    }
+    setMap(map1, participant)
+    setMap(map2, completion)
+
 
     for(const item of map1){
         const value1 = map1.get(item[0])
