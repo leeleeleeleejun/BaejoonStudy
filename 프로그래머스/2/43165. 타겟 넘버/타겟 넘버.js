@@ -1,28 +1,24 @@
 function solution(numbers, target) {
     var answer = 0;
     
-    const a = (index, array) => {
-        if(index >= numbers.length){
-            const value = array.reduce((prev, curr) => prev + curr, 0)
-            if(value === target ){
+    const a = (arr,currIdx) => {
+        
+        if(arr.length < numbers.length){
+            const plus = [...arr, numbers[currIdx]]
+            const minus = [...arr, numbers[currIdx] * - 1]
+
+            a(plus, currIdx + 1)
+            a(minus, currIdx + 1)
+            
+        }else{
+            const value = arr.reduce((a,b)=> a + b, 0)
+            if(value === target){
                 answer++
             }
-            return
         }
-        
-        const targetIndex = array[index]
-        const prevArray = array.slice(0,index)
-        const nextArray = array.slice(index+1)
-        
-        
-        const plusArray = [...prevArray, targetIndex, ...nextArray]
-        const minusArray = [...prevArray, (targetIndex * -1), ...nextArray]
-
-        a(index+1, plusArray)
-        a(index+1, minusArray)
     }
     
-    a(0, numbers)
+    a([],0)
     
     return answer;
 }
