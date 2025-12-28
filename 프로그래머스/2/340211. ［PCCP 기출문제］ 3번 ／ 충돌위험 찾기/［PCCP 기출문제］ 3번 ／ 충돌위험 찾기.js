@@ -1,32 +1,34 @@
-
 function solution(points, routes) {
-  var answer = 0
   routes = routes.map((item) => [
     ...item.map((point) => [...points[point - 1]]),
     0,
   ])
   let crushCount = 0
-  const curr = routes
-    .map((item) => item[item[item.length - 1]].join(','))
-    .sort()
 
-  let a = 0
-  for (let i = 0; i < curr.length; i++) {
-    let count = 0
+  const check = () => {
+    const curr = routes
+      .map((item) => item[item[item.length - 1]].join(','))
+      .sort()
 
-    for (let j = i + 1; j < curr.length; j++) {
-      if (curr[i] === curr[j]) {
-        count++
-        i++
+    let a = 0
+    for (let i = 0; i < curr.length; i++) {
+      let count = 0
+
+      for (let j = i + 1; j < curr.length; j++) {
+        if (curr[i] === curr[j]) {
+          count++
+          i++
+        }
+      }
+      if (count > 0) {
+        a++
       }
     }
-    if (count > 0) {
-      a++
-    }
+
+    crushCount += a
   }
 
-  crushCount += a
-
+  check()
   while (routes.length > 0) {
     // 좌표 비교
     for (let i = 0; i < routes.length; i++) {
@@ -50,25 +52,7 @@ function solution(points, routes) {
       }
     }
 
-    const curr = routes
-      .map((item) => item[item[item.length - 1]].join(','))
-      .sort()
-    let a = 0
-    for (let i = 0; i < curr.length; i++) {
-      let count = 0
-
-      for (let j = i + 1; j < curr.length; j++) {
-        if (curr[i] === curr[j]) {
-          count++
-          i++
-        }
-      }
-      if (count > 0) {
-        a++
-      }
-    }
-
-    crushCount += a
+    check()
 
     for (let i = 0; i < routes.length; i++) {
       const target = routes[i]
